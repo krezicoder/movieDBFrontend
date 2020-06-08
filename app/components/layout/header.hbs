@@ -1,0 +1,45 @@
+<div class="mb-2 bg-blue-600 text-white">
+    <div class="flex flex-col md:flex-row px-4 font-medium items-center tracking-wide">
+        <div class="flex md:mt-0 mt-4 items-center">
+            <svg viewBox="0 0 32 32" stroke="currentColor" stroke-width="4" stroke-linecap="round" class="w-8 h-8">
+                <path d="M28 11v11M22 3v26M16 11v11M10 3v26M4 11v11"
+                    transform="translate(16, 16) rotate(45) scale(.75, 1) translate(-16, -16)" />
+            </svg>
+            <Link-To @route="application" class="md:my-4 md:mr-4 px-2 rounded text-2xl">Movies DB</Link-To>
+        </div>
+        <ul class="flex flex-col md:flex-row mx-auto md:mt-0 mt-2 list-disc md:list-none">
+            <li class="md:mx-3 md:py-6 pb-2">
+                <Link-To @route="movies" class="hover:text-gray-200 focus:text-gray-200 text-white">Movies
+                </Link-To>
+            </li>
+            <li class="md:mx-3 md:py-6 pb-2">
+                <Link-To @route="categories" class="hover:text-gray-200 focus:text-gray-200 text-white">Categories
+                </Link-To>
+            </li>
+        </ul>
+        {{#if this.session.isAuthenticated}}
+        <div class="flex">
+            <button {{on 'click' this.logout}}
+                class="md:my-4 mt-2 mr-2 md:mr-4 mb-4 px-4 py-2 hover:bg-blue-700 border-2 border-white rounded shadow-lg">
+                Log Out</button>
+
+        </div>
+
+        {{/if}}
+
+        {{#unless this.session.isAuthenticated}}
+        <div class="flex">
+            <Link-To @route="login"
+                class="md:my-4 mt-2 mr-2 md:mr-4 mb-4 px-4 py-2 hover:bg-blue-700 border-2 border-white rounded shadow-lg">
+                Sign In</Link-To>
+            <a class="md:my-4 mt-2 mb-4 px-4 py-2 hover:bg-gray-200 bg-white border-2 hover:border-gray-200 border-white rounded shadow-lg text-blue-700"
+                href="#">
+                Sign Up
+            </a>
+        </div>
+        {{/unless}}
+
+    </div>
+</div>
+
+{{yield}}

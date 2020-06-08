@@ -1,0 +1,11 @@
+<ul>
+    {{#each @model as |movie|}}
+
+    <li>
+        {{movie.title}}
+        {{movie.description}}
+        {{movie.category}}
+    </li>
+    {{/each}}
+</ul>
+{{outlet}}

@@ -1,3 +1,11 @@
-<h1 class="text-blue-500">Welcome to ember</h1>
+<Layout::Header></Layout::Header>
+
+{{#if this.session.isAuthenticated}}
+{{this.currentUser.firstName}}
+{{this.currentUser.lastName}}
+{{this.currentUser.email}}
+{{this.currentUser.id}}
+{{/if}}
+
 
 {{outlet}}

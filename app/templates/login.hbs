@@ -1,0 +1,24 @@
+<section class="text-gray-700 body-font">
+    <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
+        <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+            <h1 class="title-font font-medium text-3xl text-gray-900">Welcome to the Movie Database</h1>
+            <p class="leading-relaxed mt-4">Pick a movie and rate them. Login to add new movies</p>
+        </div>
+        <div class="lg:w-2/6 md:w-1/2 bg-gray-200 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+            <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Login</h2>
+
+            <Input id='username' placeholder='Enter email' @value={{this.username}}
+                class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" />
+            <Input id='password' placeholder='Enter Password' type='password' @value={{this.password}}
+                class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4"
+                class="bg-white rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2 mb-4" />
+            <button type="submit" {{on "click" this.authenticate}}
+                class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Login</button>
+            <p class="text-xs text-gray-500 mt-3">Login to continue</p>
+
+
+
+        </div>
+    </div>
+</section>
+{{outlet}}
