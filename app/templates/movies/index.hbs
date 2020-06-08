@@ -26,10 +26,30 @@
                 <td class="px-4 py-3">{{movie.title}} {{movie.user.id}}</td>
                 <td class="px-4 py-3">{{movie.description}}</td>
                 <td class="px-4 py-3">{{movie.category.title}}</td>
-                <td class="px-4 py-3">Ratings</td>
+                {{#if this.session.isAuthenticated}}
+                <td class="px-4 py-3 w-20">
+                    {{#if movie.hasCrudPermission}}
+                    <StarRating @rating={{movie.avgRating}} @numStars={{5}} @anyPercent={{true}} @readOnly={{true}}
+                        @width={{25}} @height={{25}} @fillColor={{"#48bb78"}} />
+                    <span class="-m-1">({{movie.avgRating}})</span>
+                    {{/if}}
+                    {{#unless movie.hasCrudPermission}}
+
+                    <StarRating @rating={{movie.avgRating}} @numStars={{5}} @readOnly={{true}}
+                        @fillColor={{"#bb4848"}} />
+                    <span class="-m-1">({{movie.avgRating}})</span>
+                    {{/unless}}
+
+                </td>
 
                 <td class="px-4 py-3 text-lg text-gray-900">
                     {{#if movie.hasCrudPermission}}
+
+                    <button type="button">
+                        <LinkTo @route="movies.edit" @model={{movie.id}}>
+                            <FaIcon @icon="edit" class="text-green-500" />
+                        </LinkTo>
+                    </button>
                     <button type="button" {{on 'click' (fn this.deleteMovie movie)}}>
                         <FaIcon @icon="trash" class="text-red-500" /> </button>
                     {{/if}}
@@ -37,6 +57,22 @@
                     <span class="text-red-500 text-sm">No Actions</span>
                     {{/unless}}
                 </td>
+                {{/if}}
+
+                {{#unless this.session.isAuthenticated}}
+                <td class="px-4 py-3">
+                    <StarRating @rating={{movie.avgRating}} @numStars={{5}} @readOnly={{true}}
+                        @fillColor={{"#bb4848"}} />
+                    ({{movie.avgRating}}) </td>
+
+                <td class="px-4 py-3 text-lg text-gray-900">
+
+                    <span class="text-red-500 text-sm">No Actions</span>
+
+                </td>
+
+                {{/unless}}
+
 
             </tr>
 

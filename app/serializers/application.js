@@ -11,7 +11,7 @@ export default class ApplicationSerializer extends DS.JSONAPISerializer {
         if (payload.links) {
             result.meta.pagination = this.createPageMeta(payload.links);
         }
-        console.log(result);
+
         return result;
     }
 

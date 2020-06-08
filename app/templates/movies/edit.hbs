@@ -1,0 +1,48 @@
+<div class="flex flex-col">
+    <section class="text-gray-700 body-font relative">
+        <div class="container px-5 py-5 mx-auto">
+            <div class="flex flex-col text-center w-full mb-6">
+                <h4 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Editing Movie
+                </h4>
+            </div>
+            <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                <div class="flex flex-wrap -m-2">
+                    <div class="p-2 w-1/2">
+                        <Input id='username' @value={{@model.movie.title}}
+                            class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2"
+                            placeholder="Title" type="text" />
+                    </div>
+                    <div class="p-2 w-1/2">
+                        <PowerSelect @options={{@model.categories}} @searchEnabled={{true}} @searchField="title"
+                            @onChange={{this.changeCategory}} @selected={{@model.movie.category}} as |category|>
+                            {{category.title}}
+                        </PowerSelect>
+                    </div>
+
+                    <div class="p-2 w-1/2">
+                        <StarRating @rating={{@model.movie.avgRating}} @numStars={{5}} @anyPercent={{true}}
+                            @readOnly={{false}} @width={{25}} @height={{25}} @fillColor={{"#48bb78"}}
+                            @useHalfStars={{true}} @onHover={{fn this.updateRatingValue}}
+                            @onClick={{fn this.saveRating}} /> {{this.updatedRatingValue}}
+                    </div>
+                    <div class="p-2 w-full">
+                        <Input id='username' @value={{@model.movie.description}} type="textarea"
+                            class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none h-12 focus:border-indigo-500 text-base px-4 py-2 resize-none block"
+                            placeholder="Description" />
+                    </div>
+                    <div class="flex p-2 w-full">
+                        <LinkTo @route={{"movies.index"}}>
+                            <button
+                                class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Cancel</button>
+                        </LinkTo>
+                        <button
+                            class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                            {{on 'click' (fn this.saveMovie @model.movie)}}>Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{outlet}}
+</div>

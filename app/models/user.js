@@ -6,4 +6,5 @@ export default class UserModel extends Model {
     @attr("string") fullName;
     @attr("string") email;
     @hasMany("movie") movies;
+    @hasMany("rating") ratings;
 }

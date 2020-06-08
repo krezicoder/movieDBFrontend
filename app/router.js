@@ -10,6 +10,8 @@ Router.map(function() {
     this.route("categories", function() {});
     this.route("login");
     this.route("movies", function() {
-        this.route("index", { path: "/" });
+      this.route("index", { path: "/" });
+      this.route("edit", { path: "/edit/:movie_id" });
+      this.route('new');
     });
 });
