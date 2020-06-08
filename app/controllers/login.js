@@ -19,7 +19,7 @@ export default class LoginController extends Controller {
         }
 
         if (this.session.isAuthenticated) {
-            this.transitionToRoute("categories");
+            this.transitionToRoute("movies.index");
         }
     }
 }

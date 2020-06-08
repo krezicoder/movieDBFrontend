@@ -30,7 +30,8 @@
 
                 <td class="px-4 py-3 text-lg text-gray-900">
                     {{#if movie.hasCrudPermission}}
-                    <button>Delete</button>
+                    <button type="button" {{on 'click' (fn this.deleteMovie movie)}}>
+                        <FaIcon @icon="trash" class="text-red-500" /> </button>
                     {{/if}}
                     {{#unless movie.hasCrudPermission}}
                     <span class="text-red-500 text-sm">No Actions</span>
