@@ -27,12 +27,15 @@
                 <td class="px-4 py-3">{{movie.description}}</td>
                 <td class="px-4 py-3">{{movie.category.title}}</td>
                 <td class="px-4 py-3">Ratings</td>
-                {{#if movie.hasCrudPermission}}
-                <td class="px-4 py-3 text-lg text-gray-900">
-                    <button>Delete</button>
-                </td>
-                {{/if}}
 
+                <td class="px-4 py-3 text-lg text-gray-900">
+                    {{#if movie.hasCrudPermission}}
+                    <button>Delete</button>
+                    {{/if}}
+                    {{#unless movie.hasCrudPermission}}
+                    <span class="text-red-500 text-sm">No Actions</span>
+                    {{/unless}}
+                </td>
 
             </tr>
 
@@ -40,5 +43,6 @@
 
         </tbody>
     </table>
+    <Pagination @pagination={{@model.meta.pagination}} @route_name={{"movies.index"}}></Pagination>
 </div>
 {{outlet}}

@@ -3,8 +3,10 @@
         <Layout::Header></Layout::Header>
     </div>
 
-    <div class="flex h-screen">{{outlet}}</div>
+    <div class="flex flex-col h-screen">
+        {{outlet}}
+    </div>
     <div class="flex flex-row">
-        <Layout::Footer></Layout::Footer>
+        {{!-- <Layout::Footer></Layout::Footer> --}}
     </div>
 </div>

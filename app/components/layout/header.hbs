@@ -3,10 +3,14 @@
         <a href="/" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
             <span class="ml-3 text-xl">Movies DB</span>
         </a>
+
         <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+            {{#if this.session.isAuthenticated}}
             <LinkTo @route="movies" class="mr-5 hover:text-gray-900">Movies</LinkTo>
             <LinkTo @route="categories" class="mr-5 hover:text-gray-900">Categories</LinkTo>
+            {{/if}}
         </nav>
+
         {{#if this.session.isAuthenticated}}
         <span class="px-1">{{this.currentUser.user.fullName}}</span>
         <button type="button" {{on 'click' this.logout}}

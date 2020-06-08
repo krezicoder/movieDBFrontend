@@ -6,7 +6,22 @@ export default class MoviesIndexRoute extends Route.extend(
     AuthenticatedRouteMixin
 ) {
     @service store;
-    model() {
-        return this.store.findAll("movie");
+
+    queryParams = {
+        page: {
+            refreshModel: true,
+        },
+        page_size: {
+            refreshModel: true,
+        },
+        category: {
+            refreshModel: true,
+        },
+        search: {
+            refreshModel: true,
+        },
+    };
+    model(params) {
+        return this.store.query("movie", params);
     }
 }
