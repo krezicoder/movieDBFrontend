@@ -1,11 +1,10 @@
-<Layout::Header></Layout::Header>
+<div class="flex flex-col flex-auto">
+    <div>
+        <Layout::Header></Layout::Header>
+    </div>
 
-{{#if this.session.isAuthenticated}}
-{{this.currentUser.firstName}}
-{{this.currentUser.lastName}}
-{{this.currentUser.email}}
-{{this.currentUser.id}}
-{{/if}}
-
-
-{{outlet}}
+    <div class="flex h-screen">{{outlet}}</div>
+    <div class="flex flex-row">
+        <Layout::Footer></Layout::Footer>
+    </div>
+</div>

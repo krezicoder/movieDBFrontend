@@ -10,3 +10,8 @@ body {
 a {
     all: unset;
 }
+
+.active {
+    border-bottom: 3px solid;
+    padding-bottom: 4px;
+}
