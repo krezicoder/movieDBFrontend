@@ -1,11 +1,11 @@
 import JSONAPIAdapter from "@ember-data/adapter/json-api";
 import { inject as service } from "@ember/service";
 import { computed } from "@ember/object";
-import ENV from "../../config/environment";
+import config from "../config/environment";
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
     @service session;
-    host = ENV.API_HOST;
+    host = config.API_HOST;
     namespace = "api/v1";
 
     @computed("session.data.authenticated.jwt")
