@@ -19,6 +19,9 @@ export default class LoginController extends Controller {
         }
 
         if (this.session.isAuthenticated) {
+            this.username = "";
+            this.password = "";
+            this.currentUser.getCurrentUser();
             this.transitionToRoute("movies");
         }
     }
