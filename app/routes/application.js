@@ -8,7 +8,7 @@ export default class ApplicationRoute extends Route {
         if (this.session.isAuthenticated) {
             this.currentUser.getCurrentUser();
         } else {
-            this.transitionTo("login");
+            this.transitionTo("movies");
         }
     }
 }

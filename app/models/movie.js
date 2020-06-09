@@ -14,9 +14,13 @@ export default class MovieModel extends Model {
     @hasMany("rating") ratings;
 
     get hasCrudPermission() {
-        return this.user.get("id") === this.currentUser.user.get("id") ?
-            true :
-            false;
+        if (this.currentUser.user && this.user) {
+            return this.user.get("id") === this.currentUser.user.get("id") ?
+                true :
+                false;
+        } else {
+            return false;
+        }
     }
 
     get canRate() {

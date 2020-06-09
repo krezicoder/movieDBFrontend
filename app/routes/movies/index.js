@@ -2,9 +2,7 @@ import Route from "@ember/routing/route";
 import { inject as service } from "@ember/service";
 import AuthenticatedRouteMixin from "ember-simple-auth/mixins/authenticated-route-mixin";
 
-export default class MoviesIndexRoute extends Route.extend(
-    AuthenticatedRouteMixin
-) {
+export default class MoviesIndexRoute extends Route {
     @service store;
 
     queryParams = {
@@ -22,6 +20,8 @@ export default class MoviesIndexRoute extends Route.extend(
         },
     };
     model(params) {
-        return this.store.query("movie", params);
+        return this.store.query("movie", params).then((results) => {
+            return results;
+        });
     }
 }

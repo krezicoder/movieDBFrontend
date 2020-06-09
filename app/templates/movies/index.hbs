@@ -46,7 +46,7 @@
                     {{#if movie.hasCrudPermission}}
 
                     <button type="button">
-                        <LinkTo @route="movies.edit" @model={{movie.id}}>
+                        <LinkTo @route="movies.edit" @model={{movie}}>
                             <FaIcon @icon="edit" class="text-green-500" />
                         </LinkTo>
                     </button>
