@@ -1,7 +1,7 @@
 import JSONAPIAdapter from "@ember-data/adapter/json-api";
 import { inject as service } from "@ember/service";
 import { computed } from "@ember/object";
-import ENV from "mypulse-admin/config/environment";
+import ENV from "../../config/environment";
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
     @service session;
