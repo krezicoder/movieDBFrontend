@@ -24,9 +24,11 @@ module.exports = function(environment) {
             // Here you can pass flags/options to your application instance
             // when it is created
         },
+        API_HOST: "http://localhost:3000",
     };
 
     if (environment === "development") {
+        ENV.API_HOST = "http://localhost:3000";
         // ENV.APP.LOG_RESOLVER = true;
         // ENV.APP.LOG_ACTIVE_GENERATION = true;
         // ENV.APP.LOG_TRANSITIONS = true;
@@ -62,6 +64,21 @@ module.exports = function(environment) {
 
     if (environment === "production") {
         // here you can enable a production-specific feature
+        ENV.API_HOST = "https://movie-db-ravi.herokuapp.com";
+        ENV["ember-simple-auth-token"] = {
+            refreshAccessTokens: false,
+            refreshLeeway: 300, // refresh 5 minutes (300 seconds) before expiration
+            // refreshTokenPropertyName: "refresh_token", // Key in server response that contains the refresh token  // TODO
+            // tokenExpireName: "exp", // Field containing token expiration // TODO
+            tokenExpirationInvalidateSession: true, // Enables session invalidation on token expiration
+            // serverTokenRefreshEndpoint: "/api/token-refresh/", // Server endpoint to send refresh request
+            serverTokenEndpoint: "https://movie-db-ravi.herokuapp.com/api/v1/login", // Server endpoint to send authenticate request
+            tokenPropertyName: "jwt", // Key in server response that contains the access token
+            headers: { "Content-Type": "application/json" }, // Headers to add to the
+            tokenDataPropertyName: "jwt",
+            authorizationHeaderName: "Authorization", // Header name added to each API request
+            authorizationPrefix: "Bearer ", // Prefix added to each API request
+        };
     }
 
     return ENV;
