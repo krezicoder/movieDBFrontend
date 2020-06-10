@@ -18,7 +18,13 @@ export default class MoviesEditController extends Controller {
 
     @action
     saveRating(val) {
-        this.model.movie.ratingValue = val;
+        let rating = this.store.createRecord("rating");
+        rating.movie = this.model.movie;
+        // rating.user_id = this.currentUser.user;
+        rating.ratingValue = val;
+        this.model.movie.save().then(() => {
+            rating.save();
+        });
     }
 
     @action

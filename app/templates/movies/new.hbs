@@ -19,12 +19,14 @@
                         </PowerSelect>
                     </div>
 
-                    <div class="p-2 w-1/2">
+                    {{!-- Not Implementing this rating during create new movie --}}
+
+                    {{!-- <div class="p-2 w-1/2">
                         <StarRating @rating={{@model.movie.avgRating}} @numStars={{5}} @anyPercent={{true}}
                             @readOnly={{false}} @width={{25}} @height={{25}} @fillColor={{"#48bb78"}}
                             @useHalfStars={{true}} @onHover={{fn this.updateRatingValue}}
                             @onClick={{fn this.saveRating}} /> {{this.updatedRatingValue}}
-                    </div>
+                    </div> --}}
                     <div class="p-2 w-full">
                         <Input id='username' @value={{@model.movie.description}} type="textarea"
                             class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none h-12 focus:border-indigo-500 text-base px-4 py-2 resize-none block"

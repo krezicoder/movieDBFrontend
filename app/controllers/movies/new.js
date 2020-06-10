@@ -20,19 +20,19 @@ export default class MoviesNewController extends Controller {
 
     @action
     saveRating(val) {
-        debugger;
         let rating = this.store.createRecord("rating");
         rating.movie = this.model.movie;
         rating.user = this.currentUser.user;
         rating.ratingValue = val;
         this.model.movie.save();
         rating.save();
-
-        debugger;
     }
 
     @action
     saveMovie(movie) {
-        movie.save();
+        movie.user = this.currentUser.user;
+        movie.save().then(() => {
+            this.transitionToRoute("movies.index");
+        });
     }
 }
