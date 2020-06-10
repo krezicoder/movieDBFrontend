@@ -17,4 +17,9 @@ export default class MoviesIndexController extends Controller {
         movie.deleteRecord();
         movie.save().then(console.log("Movie Deleted"));
     }
+
+    @action
+    resetPage() {
+        this.page = 1;
+    }
 }

@@ -1,4 +1,11 @@
 <div class="w-full mx-auto">
+    <div>
+        <span><Input id='username' @value={{this.search}} @key-down={{this.resetPage}}
+                class="w-1/4 ml-2 bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2"
+                placeholder="Search Movie" type="text" /></span>
+        <Pagination @pagination={{@model.meta.pagination}} @route_name={{"movies.index"}}></Pagination>
+    </div>
+
     <table class="table-auto w-full text-left whitespace-no-wrap">
         <thead>
             <tr>
