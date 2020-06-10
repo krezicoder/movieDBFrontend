@@ -23,7 +23,9 @@ export default class MoviesEditController extends Controller {
         // rating.user_id = this.currentUser.user;
         rating.ratingValue = val;
         this.model.movie.save().then(() => {
-            rating.save();
+            rating.save().then(() => {
+                alert("Movie Rating added");
+            });
         });
     }
 
